@@ -1,12 +1,6 @@
 pipeline {
     agent any 
         stages {
-            stage ("apt java 17") {
-                steps{
-                    sh 'sudo apt install openjdk-17-jdk -y'
-                }
-                
-            }
 
             stage ("git clone") {
                 steps{
