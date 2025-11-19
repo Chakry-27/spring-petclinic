@@ -6,7 +6,7 @@ pipeline {
             }
 
             stage ("git clone") {
-                sh '''https://github.com/Manoj-0809/spring-petclinic.git'''
+                sh '''https://github.com/Chakry-27/spring-petclinic.git'''
             }
 
             stage ("mvn install") {
