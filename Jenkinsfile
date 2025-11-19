@@ -1,6 +1,10 @@
 pipeline {
     agent any 
         stages {
+            tools {
+                maven 'Maven-3.8.6' , jdk 'JDK-17'
+            }
+
 
             stage ("git clone") {
                 steps{
@@ -10,25 +14,11 @@ pipeline {
                
             }
 
-            stage ("mvn install") {
-                steps{
-                    sh 'sudo apt install maven'
-                }
-                
-            }
-
             stage ("mvn package") {
                 steps{
                     sh 'mvn package'
                 }
                 
-            }
-            stage ("mvn --version") {
-                steps{
-                    sh '''mvn --version java -version'''
-                }
-                  
-
             }
         }
 }
