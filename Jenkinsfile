@@ -1,38 +1,26 @@
 pipeline {
-    agent { label 'JDK_17' }
-    options { 
-        timeout(time: 15, unit: 'MINUTES') 
-    }
-    triggers {
-        pollSCM('H */4 * * 1-5') 
-           
-    }
-    tools {
-        jdk 'JDK_17'
+    agent any {
+        steps {
+            stage ("apt java 17") {
+                sh 'sudo apt in install openjdk-17-jdk -y'
+            }
 
-    }
-     stages {
-         stage('GIT_cloning') {
-            steps { 
-            git url : 'https://github.com/muthyalasaikiran/spring-petclinic.git',
-                branch : 'main'
-     }
-         }
+            stage ("git clone") {
+                sh '''https://github.com/Manoj-0809/spring-petclinic.git'''
+            }
 
-        stage('build and package ') {
-            steps { 
-            sh script : 'mvn package'
-     }
+            stage ("mvn install") {
+                sh 'sudo apt install maven'
+            }
+
+            stage ("mvn package") {
+                sh 'mvn package'
+            }
+            stage ("mvn --version") {
+                  sh '''mvn --version java -version'''
+
+            }
         }
 
-        stage('reportingg ') {
-            steps { 
-            archiveArtifacts artifacts : '**/target/spring-petclinic-*.jar'
-            junit testResults :  '**/target/surefire-reports/TEST-*.xml'
-     }
-        }
-    
+    }
 }
-
-}
-
