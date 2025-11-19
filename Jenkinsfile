@@ -1,10 +1,6 @@
 pipeline {
     agent any 
         stages {
-            tools {
-                maven 'Maven-3.8.6' , jdk 'JDK-17'
-            }
-
 
             stage ("git clone") {
                 steps{
