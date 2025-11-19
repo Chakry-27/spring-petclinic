@@ -1,23 +1,38 @@
 pipeline {
     agent any 
-        steps {
+        stages {
             stage ("apt java 17") {
-                sh 'sudo apt in install openjdk-17-jdk -y'
+                steps{
+                    sh 'sudo apt in install openjdk-17-jdk -y'
+                }
+                
             }
 
             stage ("git clone") {
-                sh '''https://github.com/Chakry-27/spring-petclinic.git'''
+                steps{
+                     sh '''https://github.com/Chakry-27/spring-petclinic.git'''
+                }
+               
             }
 
             stage ("mvn install") {
-                sh 'sudo apt install maven'
+                steps{
+                    sh 'sudo apt install maven'
+                }
+                
             }
 
             stage ("mvn package") {
-                sh 'mvn package'
+                steps{
+                    sh 'mvn package'
+                }
+                
             }
             stage ("mvn --version") {
-                  sh '''mvn --version java -version'''
+                steps{
+                    sh '''mvn --version java -version'''
+                }
+                  
 
             }
         }
