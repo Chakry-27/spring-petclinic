@@ -1,5 +1,5 @@
 pipeline {
-    agent any {
+    agent any 
         steps {
             stage ("apt java 17") {
                 sh 'sudo apt in install openjdk-17-jdk -y'
@@ -21,6 +21,5 @@ pipeline {
 
             }
         }
-
-    }
 }
+
