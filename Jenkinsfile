@@ -3,7 +3,7 @@ pipeline {
         stages {
             stage ("apt java 17") {
                 steps{
-                    sh 'sudo apt in install openjdk-17-jdk -y'
+                    sh 'sudo apt install openjdk-17-jdk -y'
                 }
                 
             }
