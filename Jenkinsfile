@@ -4,7 +4,8 @@ pipeline {
 
             stage ("git clone") {
                 steps{
-                     sh '''https://github.com/Chakry-27/spring-petclinic.git'''
+                   git url: 'https://github.com/Chakry-27/spring-petclinic.git',    
+                      branch: "main"
                 }
                
             }
